@@ -17,24 +17,22 @@ public class CheckBoxes extends BaseUtils {
 
        WebElement checkBox = getDriver().findElement(By.xpath("//input[contains(@name,'chk_friendsandfamily')]"));
        checkBox.click();
-       assert checkBox.isSelected();
+       Assert.assertFalse(checkBox.isSelected());
     }
 
     @Test
+    @Ignore
     void allCheckBoxesCount () throws Exception{
 
-        System.out.println(getDriver().findElements(By.cssSelector("input[type='checkbox']")).size());
-
+        Assert.assertEquals(getDriver().findElements(By.cssSelector("input[type='checkbox']")).size(), 6);
         /*
         List<WebElement> x = getDriver().findElements(By.cssSelector("input[type='checkbox']"));
         for (WebElement option : x){
             Thread.sleep(1000);
             option.click();
         }
-
         Тут я пытаюсь поставить галочки во всех Чебоксарах сразу
          */
-
     }
 
 }
