@@ -1,4 +1,4 @@
-package rahul;
+package rahulSection7;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -11,7 +11,7 @@ public class LocatorsAndString extends BaseUtils {
     void test() throws Exception {
 
         getDriver().get("https://rahulshettyacademy.com/locatorspractice/");//a[contains(text(),'Forgot your password?')]
-        getDriver().findElement(By.cssSelector("#inputUsername")).sendKeys("rahul");
+        getDriver().findElement(By.cssSelector("#inputUsername")).sendKeys("rahulSection7");
         getDriver().findElement(By.xpath("//input[@placeholder='Password']")).sendKeys(getPassword());
         Thread.sleep(1000);
         getDriver().findElement(By.cssSelector("#chkboxOne")).click();

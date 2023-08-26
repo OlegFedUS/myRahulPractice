@@ -1,4 +1,4 @@
-package rahul;
+package rahulSection7;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
