@@ -6,11 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class CheckboxAssignment extends BaseUtils {
+public class CheckboxAssignmentFirstAssign extends BaseUtils {
 
     @Test
     void checkboxes() throws Exception {
