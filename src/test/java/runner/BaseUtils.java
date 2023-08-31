@@ -1,10 +1,9 @@
 package runner;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeMethod;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseUtils extends Base{
@@ -20,8 +19,30 @@ public class BaseUtils extends Base{
         getDriver().findElement(By.xpath("//button[@class='go-to-login-btn']")).click();
         return messageTxt;
     }
+    protected void addToCart() {
 
+        String[] itemArray = {"Pears", "Apple", "Orange", "Banana", "Mango"};
+        List<String> fruitList = Arrays.asList(itemArray);
+        int count = 0;
 
+        List<WebElement> products = getDriver().findElements(By.cssSelector("h4[class='product-name']"));
+
+        for (int i = 0; i < products.size(); i++) {
+
+            String[] fruitNameArr = products.get(i).getText().split("-");
+            String fruitName = fruitNameArr[0].trim();
+
+            if (fruitList.contains(fruitName)) {
+                count++;
+                List<WebElement> buttons = getDriver().findElements(By.xpath("//div[@class='product-action']"));
+                buttons.get(i).click();
+                if (count == 5) {
+                    break;
+                }
+            }
+
+        }
+    }
 
 
 }
