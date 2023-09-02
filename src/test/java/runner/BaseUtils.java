@@ -1,6 +1,7 @@
 package runner;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
@@ -19,10 +20,9 @@ public class BaseUtils extends Base{
         getDriver().findElement(By.xpath("//button[@class='go-to-login-btn']")).click();
         return messageTxt;
     }
-    protected void addToCart() {
+    protected <T> void addToCart(T[] items) {
 
-        String[] itemArray = {"Pears", "Apple", "Orange", "Banana", "Mango"};
-        List<String> fruitList = Arrays.asList(itemArray);
+        List<T> fruitList = Arrays.asList(items);
         int count = 0;
 
         List<WebElement> products = getDriver().findElements(By.cssSelector("h4[class='product-name']"));
@@ -36,7 +36,7 @@ public class BaseUtils extends Base{
                 count++;
                 List<WebElement> buttons = getDriver().findElements(By.xpath("//div[@class='product-action']"));
                 buttons.get(i).click();
-                if (count == 5) {
+                if (count == items.length) {
                     break;
                 }
             }
