@@ -1,14 +1,19 @@
 package selfPracticeTests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseUtils;
+
 
 public class SisterTests extends BaseUtils {
 
     @Test
+    @Ignore
     void motivationWebPage() throws Exception{
 
         getDriver().get("https://octagonal-important-bottle.glitch.me/");
@@ -29,11 +34,18 @@ public class SisterTests extends BaseUtils {
 
         }
 
-
-
-
-
-
     }
 
+    @Test
+    void action(){
+
+        getDriver().get("https://octagonal-important-bottle.glitch.me/");
+
+        WebElement button = getDriver().findElement(By.id("btn"));
+
+        Actions act = new Actions(getDriver());
+
+        act.moveToElement(button).click().build().perform();
+
+    }
 }
