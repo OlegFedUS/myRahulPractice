@@ -11,12 +11,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 public class repeat extends BaseUtils {
 
     @Test
     void repeat() {
-
 
         getDriver().get("https://rahulshettyacademy.com/loginpagePractise/");
 
@@ -41,8 +41,50 @@ public class repeat extends BaseUtils {
         System.out.println(parent);
         System.out.println(child);
 
+    }
 
+    @Test
+    void repeat2(){
 
+        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+        int j = 0;
+        getDriver().get("https://rahulshettyacademy.com/seleniumPractise/#/");
+
+        List<WebElement> allItems = getDriver().findElements(By.xpath("//div[@class='product']"));
+
+        String[] arr = {"Brocolli", "Potato", "Carrot", "Onion", "Cucumber"};
+
+        List<String> prNames = Arrays.asList(arr);
+
+        for (int i = 0; i < allItems.size(); i++){
+
+            String[] names = allItems.get(i).getText().split("-");
+            String format = names[0].trim();
+
+            if(prNames.contains(format)){
+                j++;
+                List<WebElement> buttons = getDriver().findElements(By.xpath("//div[@class='product-action']"));
+                buttons.get(i).click();
+
+                if(j == arr.length){
+                    break;
+                }
+            }
+        }
+
+        getDriver().findElement(By.xpath("//img[@alt='Cart']")).click();
+        getDriver().findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='promoCode']"))).sendKeys("123");
+        WebElement button = getDriver().findElement(By.xpath("//button[text()='Apply']"));
+        button.click();
+        String message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='promoInfo']"))).getText();
+
+        getDriver().navigate().back();
+
+        System.out.println(message);
 
     }
+
 }
+
+
