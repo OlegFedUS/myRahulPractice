@@ -1,7 +1,6 @@
 package Assignments;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -12,7 +11,7 @@ import runner.BaseUtils;
 import java.time.Duration;
 import java.util.List;
 
-public class majorAssignmentThird extends BaseUtils {
+public class AssignmentThirdMajor1 extends BaseUtils {
 
     @Test
     void e2eMajorAssignmentTest(){
