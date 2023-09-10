@@ -1,8 +1,10 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseUtils;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class repeat extends BaseUtils {
 
     @Test
+    @Ignore
     void repeat() {
 
         getDriver().get("https://rahulshettyacademy.com/loginpagePractise/");
@@ -44,9 +47,10 @@ public class repeat extends BaseUtils {
     }
 
     @Test
-    void repeat2(){
+    @Ignore
+    void repeat2() {
 
-        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         int j = 0;
         getDriver().get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
@@ -56,17 +60,17 @@ public class repeat extends BaseUtils {
 
         List<String> prNames = Arrays.asList(arr);
 
-        for (int i = 0; i < allItems.size(); i++){
+        for (int i = 0; i < allItems.size(); i++) {
 
             String[] names = allItems.get(i).getText().split("-");
             String format = names[0].trim();
 
-            if(prNames.contains(format)){
+            if (prNames.contains(format)) {
                 j++;
                 List<WebElement> buttons = getDriver().findElements(By.xpath("//div[@class='product-action']"));
                 buttons.get(i).click();
 
-                if(j == arr.length){
+                if (j == arr.length) {
                     break;
                 }
             }
@@ -85,6 +89,32 @@ public class repeat extends BaseUtils {
 
     }
 
+    @Test
+    @Ignore
+    void repeat3() {
+
+        getDriver().get("https://rahulshettyacademy.com/AutomationPractice/");
+
+        WebElement iframe = getDriver().findElement(By.id("courses-iframe"));
+        getDriver().switchTo().frame(iframe);
+
+        System.out.println(getDriver().findElement(By.xpath("//div[@class='price-title']")).getText());
+
+        getDriver().navigate().back();
+
+        Actions actions = new Actions(getDriver());
+        WebElement radioButton = getDriver().findElement(By.xpath("//input[@value='radio2']"));
+
+        actions.moveToElement(radioButton).click().build().perform();
+
+
+    }
+
+    @Test
+    void repeat4() {
+
+
+
+    }
+
 }
-
-
