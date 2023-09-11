@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -113,7 +114,12 @@ public class repeat extends BaseUtils {
     @Test
     void repeat4() {
 
+        getDriver().get("https://rahulshettyacademy.com/AutomationPractice/");
 
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("window.scrollBy(0,1000)");
+
+        js.executeScript("document.querySelector('.tableFixHead').scrollTop=500");
 
     }
 
