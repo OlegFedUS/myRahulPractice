@@ -117,9 +117,10 @@ public class repeat extends BaseUtils {
         getDriver().get("https://rahulshettyacademy.com/AutomationPractice/");
 
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("window.scrollBy(0,1000)");
 
+        js.executeScript("window.scrollBy(0,500)");
         js.executeScript("document.querySelector('.tableFixHead').scrollTop=500");
+
 
     }
 
