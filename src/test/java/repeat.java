@@ -121,6 +121,12 @@ public class repeat extends BaseUtils {
         js.executeScript("window.scrollBy(0,500)");
         js.executeScript("document.querySelector('.tableFixHead').scrollTop=500");
 
+    }
+
+    @Test
+    void repeat5(){
+
+        getDriver().get("https://expired.badssl.com/");
 
     }
 
