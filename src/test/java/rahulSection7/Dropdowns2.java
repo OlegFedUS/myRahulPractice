@@ -1,6 +1,7 @@
 package rahulSection7;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import runner.BaseUtils;
@@ -15,16 +16,15 @@ public class Dropdowns2 extends BaseUtils {
          getDriver().findElement(By.xpath("//input[contains(@class,'inputs ui-autocomplete-input')]"))
                  .sendKeys("Ger");
 
-         List<WebElement> list = getDriver().findElements(By.cssSelector("li[class='ui-menu-item']")); //Нужно найти общий локатор. Который взаимодействует со всеми элементами.
+        int list = getDriver().findElements(By.cssSelector("li[class='ui-menu-item']")).size();
 
-         for (WebElement option : list){
-             String optionTxt = option.getText().toLowerCase();
-             if (optionTxt.contains("germany")){
-                 System.out.println(option.getText());
-                 option.click();
-                 break;
-             }
-         }
+        for (int i = 1; i < list; i++){
+            getDriver().findElement(By.xpath("//input[contains(@class,'inputs ui-autocomplete-input')]")).sendKeys(Keys.DOWN);
+            getDriver().findElement(By.xpath("//input[contains(@class,'inputs ui-autocomplete-input')]")).click();
+            break;
+        }
+
+        System.out.println(getDriver().findElement(By.xpath("//input[contains(@class,'inputs ui-autocomplete-input')]")).getAttribute("Value"));
 
     }
 
