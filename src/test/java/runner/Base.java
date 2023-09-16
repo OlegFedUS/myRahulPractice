@@ -19,6 +19,7 @@ public class Base {
     protected void beforeMethod(){
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*\", \"--window-size=1920,1080");
+        chromeOptions.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); //ожидание пока элемент появится на странице.
         //getDriver().get("https://rahulshettyacademy.com/dropdownsPractise/");

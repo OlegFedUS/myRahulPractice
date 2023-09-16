@@ -31,6 +31,7 @@ public class TableGrids extends BaseUtils {
 
         Integer intText = Integer.parseInt(formText);
 
+        System.out.println(intText);
         Assert.assertEquals(count, intText);
     }
 
