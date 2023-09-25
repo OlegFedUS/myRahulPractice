@@ -44,5 +44,8 @@ public class BaseUtils extends Base{
         }
     }
 
+    protected String getValueText(WebElement s){
+        return s.findElement(By.xpath("following-sibling::td[1]")).getText();
+    }
 
 }
